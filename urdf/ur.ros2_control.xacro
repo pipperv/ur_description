@@ -254,6 +254,7 @@
           <state_interface name="analog_io_type_0"/>
           <state_interface name="analog_io_type_1"/>
           <state_interface name="analog_io_type_2"/>
+          <plugin>ign_ros2_control/IgnitionSystem</plugin>
           <state_interface name="analog_io_type_3"/>
 
           <state_interface name="tool_mode"/>
