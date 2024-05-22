@@ -44,8 +44,8 @@
      <!-- Simulation parameters -->
    <xacro:arg name="use_fake_hardware" default="true" />
    <xacro:arg name="fake_sensor_commands" default="false" />
-   <xacro:arg name="sim_gazebo" default="true" />
-   <xacro:arg name="sim_ignition" default="false" />
+   <xacro:arg name="sim_gazebo" default="false" />
+   <xacro:arg name="sim_ignition" default="true" />
    <xacro:arg name="simulation_controllers_file" default="$(find ur_simulation_gazebo)/config/ur_controllers.yaml"/>
    <!-- convert to property to use substitution in function -->
    <xacro:property name="simulation_controllers_file" default="$(arg simulation_controllers_file)"/>
@@ -122,12 +122,17 @@
 
   <xacro:if value="$(arg sim_ignition)">
     <!-- Gazebo plugins -->
-    <gazebo reference="world">
-    </gazebo>
-    <gazebo>
+    <!-- <gazebo>
       <plugin filename="libign_ros2_control-system.so" name="ign_ros2_control::IgnitionROS2ControlPlugin">
         <parameters>${xacro.load_yaml(simulation_controllers_file)}</parameters>
         <controller_manager_node_name>$(arg tf_prefix)controller_manager</controller_manager_node_name>
+      </plugin>
+    </gazebo> -->
+    <gazebo>
+      <plugin filename="ign_ros2_control-system" name="ign_ros2_control::IgnitionROS2ControlPlugin">
+        <robot_param>robot_description</robot_param>
+        <robot_param_node>robot_state_publisher</robot_param_node>
+        <parameters>$(find ur_simulation_gazebo)/config/ur_controllers.yaml</parameters>
       </plugin>
     </gazebo>
   </xacro:if>
