@@ -1,14 +1,22 @@
-- gz_topic_name: "/left_lidar"
-  ros_topic_name: "/left_lidar"
-  ros_type_name: "sensor_msgs/msg/LaserScan"
-  gz_type_name: "ignition.msgs.LaserScan"
+- gz_topic_name: "left_lidar/points"
+  ros_topic_name: "left_lidar/points"
+  ros_type_name: "sensor_msgs/msg/PointCloud2"
+  gz_type_name: "ignition.msgs.PointCloudPacked"
   direction: "GZ_TO_ROS"  # Default "BIDIRECTIONAL" - Bridge both directions
                             # "GZ_TO_ROS" - Bridge Ignition topic to ROS
                             # "ROS_TO_GZ" - Bridge ROS topic to Ignition
 
-- gz_topic_name: "/left_lidar/points"
-  ros_topic_name: "/left_lidar/points"
-  ros_type_name: "sensor_msgs/msg/PointCLoud2"
+# - gz_topic_name: "left_lidar"
+#   ros_topic_name: "left_lidar"
+#   ros_type_name: "sensor_msgs/msg/LaserScan"
+#   gz_type_name: "ignition.msgs.LaserScan"
+#   direction: "GZ_TO_ROS"  # Default "BIDIRECTIONAL" - Bridge both directions
+#                             # "GZ_TO_ROS" - Bridge Ignition topic to ROS
+#                             # "ROS_TO_GZ" - Bridge ROS topic to Ignition
+
+- gz_topic_name: "right_lidar/points"
+  ros_topic_name: "right_lidar/points"
+  ros_type_name: "sensor_msgs/msg/PointCloud2"
   gz_type_name: "ignition.msgs.PointCloudPacked"
   direction: "GZ_TO_ROS"  # Default "BIDIRECTIONAL" - Bridge both directions
                             # "GZ_TO_ROS" - Bridge Ignition topic to ROS
