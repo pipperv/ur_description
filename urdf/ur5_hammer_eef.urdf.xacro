@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro">
+
+  <xacro:property name="mass_eef_hammer_link"               value="0.230" />
+  <xacro:property name="mass_eef_hammer_percutor_link"      value="0.020" />
+
+  <xacro:property name="volume_eef_hammer_link"             value="0.000482" />
+  <xacro:property name="volume_eef_hammer_percutor_link"    value="0.000017" />
+
+  <xacro:macro name="hammer_eef" params="prefix">
+
+    <joint name="${prefix}eef_hammer_fixed_joint" type="fixed">
+      <parent link="${prefix}wrist_3_link" />
+      <child link = "${prefix}eef_hammer_link" />
+      <origin xyz="0.005 0.0 0.0" rpy="0.0 0.0 ${-pi/2}" />
+    </joint>
+
+    <link name="${prefix}eef_hammer_link" >
+
+      <visual>
+        <geometry>
+          <mesh filename="file://$(find ur_description)/meshes/eefs/visual/percutor_fixed_joint.stl" />
+        </geometry>
+        <material name="Gray">
+          <color rgba="0.4 0.4 0.4 1.0"/>
+        </material>
+      </visual>
+
+      <collision>
+        <geometry>
+          <mesh filename="file://$(find ur_description)/meshes/eefs/collision/percutor_fixed_joint.stl" />
+        </geometry>
+      </collision>
+
+      <inertial>
+        <origin xyz="0.000032 -0.091745 0.032045" rpy="0 0 0"/>
+        <mass value="${mass_eef_hammer_link}"/>
+        <inertia
+            ixx="${(mass_eef_hammer_link / volume_eef_hammer_link) *  0.324565 * (10**-5)}"
+            ixy="${(mass_eef_hammer_link / volume_eef_hammer_link) * -0.000120 * (10**-5)}"
+            ixz="${(mass_eef_hammer_link / volume_eef_hammer_link) *  0.000036 * (10**-5)}"
+            iyy="${(mass_eef_hammer_link / volume_eef_hammer_link) *  0.036927 * (10**-5)}"
+            iyz="${(mass_eef_hammer_link / volume_eef_hammer_link) *  0.008348 * (10**-5)}"
+            izz="${(mass_eef_hammer_link / volume_eef_hammer_link) *  0.331867 * (10**-5)}"/>
+      </inertial>
+
+    </link>
+
+    <joint name="${prefix}eef_hammer_percutor_fixed_joint" type="fixed">
+      <parent link="${prefix}eef_hammer_link" />
+      <child link = "${prefix}eef_hammer_percutor_link" />
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+    </joint>
+
+    <link name="${prefix}eef_hammer_percutor_link" >
+
+      <visual>
+        <geometry>
+          <mesh filename="file://$(find ur_description)/meshes/eefs/visual/percutor.stl" />
+        </geometry>
+        <material name="White">
+          <color rgba="1.0 1.0 1.0 1.0"/>
+        </material>
+      </visual>
+
+      <collision>
+        <geometry>
+          <mesh filename="file://$(find ur_description)/meshes/eefs/collision/percutor.stl" />
+        </geometry>
+      </collision>
+
+      <inertial>
+        <origin xyz="0.0 -0.252996 0.030247" rpy="0 0 0"/>
+        <mass value="${mass_eef_hammer_percutor_link}"/>
+        <inertia
+            ixx="${(mass_eef_hammer_percutor_link / volume_eef_hammer_percutor_link) *  0.000823 * (10**-5)}"
+            ixy="${(mass_eef_hammer_percutor_link / volume_eef_hammer_percutor_link) *  0.0      * (10**-5)}"
+            ixz="${(mass_eef_hammer_percutor_link / volume_eef_hammer_percutor_link) *  0.0      * (10**-5)}"
+            iyy="${(mass_eef_hammer_percutor_link / volume_eef_hammer_percutor_link) *  0.000073 * (10**-5)}"
+            iyz="${(mass_eef_hammer_percutor_link / volume_eef_hammer_percutor_link) *  0.000013 * (10**-5)}"
+            izz="${(mass_eef_hammer_percutor_link / volume_eef_hammer_percutor_link) *  0.000825 * (10**-5)}"/>
+      </inertial>
+
+    </link>
+
+    <joint name="${prefix}eef_hammer_percutor_tip_joint" type="fixed">
+      <parent link="${prefix}eef_hammer_percutor_link" />
+      <child link = "${prefix}end_effector" />
+      <origin xyz="0.0 -0.3 0.0305" rpy="${-pi/2} 0.0 ${pi}" />
+    </joint>
+
+    <link name="${prefix}end_effector" >
+      <visual>
+          <geometry>
+            <sphere radius="0.001"/>
+            <color rgba="1.0 1.0 0.0 1.0"/>
+          </geometry>
+      </visual>
+      <collision>
+        <geometry>
+          <sphere radius="0.001"/>
+        </geometry>
+      </collision>
+    </link>
+
+</xacro:macro>
+</robot>
