@@ -21,3 +21,11 @@
   direction: "GZ_TO_ROS"  # Default "BIDIRECTIONAL" - Bridge both directions
                             # "GZ_TO_ROS" - Bridge Ignition topic to ROS
                             # "ROS_TO_GZ" - Bridge ROS topic to Ignition
+
+- gz_topic_name: "/world/empty/model/ur/link/base_link/sensor/spherical_lidar/scan/points"
+  ros_topic_name: "/scan/points"
+  ros_type_name: "sensor_msgs/msg/PointCloud2"
+  gz_type_name: "ignition.msgs.PointCloudPacked"
+  direction: "GZ_TO_ROS"  # Default "BIDIRECTIONAL" - Bridge both directions
+                            # "GZ_TO_ROS" - Bridge Ignition topic to ROS
+                            # "ROS_TO_GZ" - Bridge ROS topic to Ignition
