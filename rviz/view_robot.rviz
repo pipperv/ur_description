@@ -6,8 +6,9 @@ Panels:
       Expanded:
         - /Global Options1
         - /RobotModel1/Description Topic1
-        - /TF1
         - /TF1/Frames1
+        - /MarkerArray1
+        - /MarkerArray1/Namespaces1
       Splitter Ratio: 0.5
     Tree Height: 778
   - Class: rviz_common/Selection
@@ -209,6 +210,63 @@ Visualization Manager:
                             {}
       Update Interval: 0
       Value: true
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz_default_plugins/PointCloud2
+      Color: 255; 255; 255
+      Color Transformer: Intensity
+      Decay Time: 0
+      Enabled: false
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Max Intensity: 4096
+      Min Color: 0; 0; 0
+      Min Intensity: 0
+      Name: PointCloud2
+      Position Transformer: XYZ
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.009999999776482582
+      Style: Flat Squares
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        Filter size: 10
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /virtual_enviroment
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: false
+    - Class: rviz_default_plugins/MarkerArray
+      Enabled: true
+      Name: MarkerArray
+      Namespaces:
+        eef_force_feedback: true
+        end_effector_force/eef_hammer_link: false
+        end_effector_force/end_effector: false
+        end_effector_force/forearm_link: false
+        forearm_link: false
+        normal: false
+        octree_segments: true
+        shoulder_link: false
+        upper_arm_link: false
+        wrist_1_link: false
+        wrist_2_link: false
+        wrist_3_link: false
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /torque_markers
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -255,25 +313,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 1.6224032640457153
+      Distance: 1.9609522819519043
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -0.0457618348300457
-        Y: -0.07058511674404144
-        Z: 0.49734944105148315
+        X: 0.491752028465271
+        Y: 0.17573074996471405
+        Z: 0.17641164362430573
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.5803987383842468
+      Pitch: 0.3653983771800995
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 3.0985844135284424
+      Yaw: 1.1885831356048584
     Saved: ~
 Window Geometry:
   Displays:
